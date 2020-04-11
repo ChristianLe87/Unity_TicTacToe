@@ -12,7 +12,7 @@ public class ButtonScript : MonoBehaviour
 
     PlayerMachineManager playerMachineManager;
 
-    bool hasBeenPlayed = false;
+    public bool hasBeenPlayed = false;
     public char buttonVal { get; private set; }
 
     // Start is called before the first frame update

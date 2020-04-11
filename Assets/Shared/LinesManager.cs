@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LinesManager : MonoBehaviour
 {
@@ -16,9 +18,14 @@ public class LinesManager : MonoBehaviour
     GameObject lineI1;
     GameObject lineI2;
 
+    Button[] buttons = new Button[9];
+
     // Start is called before the first frame update
     void Start()
     {
+
+        buttons = GameObject.FindObjectsOfType<Button>().OrderBy(x => x.name).ToArray();
+
         {
             lineH1 = GameObject.Find("Line_H1");
             lineH1.SetActive(false);
@@ -55,5 +62,10 @@ public class LinesManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ShowLine(string lineName)
+    {
+
     }
 }
