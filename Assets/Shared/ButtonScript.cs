@@ -30,7 +30,7 @@ public class ButtonScript : MonoBehaviour
 
     public void OnUserClick()
     {
-        if(hasBeenPlayed == false)
+        if(hasBeenPlayed == false && gameLogic.isPlayerPlaying == true)
         {
             hasBeenPlayed = true;
             this.GetComponent<Image>().sprite = X_image;

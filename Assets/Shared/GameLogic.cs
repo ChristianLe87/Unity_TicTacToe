@@ -36,27 +36,26 @@ public class GameLogic : MonoBehaviour
 
                     if (buttons[randNum].GetComponent<ButtonScript>().hasBeenPlayed == false)
                     {
-                        isPlayerPlaying = true;
                         timeCount = 0f;
                         buttons[randNum].GetComponent<ButtonScript>().OnMachineClick();
+                        isPlayerPlaying = true;
                     }
                 }
             }
-        }
-        else
-        {
-
         }
     }
 
     public void PlayerWin()
     {
         GameLogic.FindObjectOfType<WinLose>().PlayerWin();
+        isGameRunning = false;
+        isPlayerPlaying = false;
     }
 
     public void PlayerLooses()
     {
         GameLogic.FindObjectOfType<WinLose>().PlayeLose();
-
+        isGameRunning = false;
+        isPlayerPlaying = false;
     }
 }
