@@ -10,7 +10,7 @@ public class ButtonScript : MonoBehaviour
     public Sprite X_image;
     public Sprite Null_image;
 
-    PlayerMachineManager playerMachineManager;
+    GameLogic gameLogic;
 
     public bool hasBeenPlayed = false;
     public char buttonVal { get; private set; }
@@ -18,7 +18,7 @@ public class ButtonScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerMachineManager = GameObject.Find("PlayerMachineManager").GetComponent<PlayerMachineManager>();
+        gameLogic = GameObject.Find("GameLogic").GetComponent<GameLogic>();
         this.GetComponent<Image>().sprite = Null_image;
     }
 
@@ -35,7 +35,7 @@ public class ButtonScript : MonoBehaviour
             hasBeenPlayed = true;
             this.GetComponent<Image>().sprite = X_image;
             buttonVal = 'X';
-            playerMachineManager.isPlayerPlaying = false;
+            gameLogic.isPlayerPlaying = false;
         }
     }
 
@@ -46,7 +46,7 @@ public class ButtonScript : MonoBehaviour
             hasBeenPlayed = true;
             this.GetComponent<Image>().sprite = O_image;
             buttonVal = 'O';
-            playerMachineManager.isPlayerPlaying = true;
+            gameLogic.isPlayerPlaying = true;
         }
     }
 }

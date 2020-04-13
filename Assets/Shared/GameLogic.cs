@@ -4,8 +4,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerMachineManager : MonoBehaviour
+public class GameLogic : MonoBehaviour
 {
+
     public bool isPlayerPlaying = true;
     float timeCount = 0;
     int randNum = 0;
@@ -15,7 +16,7 @@ public class PlayerMachineManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buttons = GameObject.FindObjectsOfType<Button>().OrderBy(x=>x.name).ToArray();
+        buttons = GameObject.FindObjectsOfType<Button>().OrderBy(x => x.name).ToArray();
     }
 
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class PlayerMachineManager : MonoBehaviour
                 randNum = Random.Range(0, 8);
 
                 // ToDo: Fix infinit loop error when no more options avalible
-                if(buttons[randNum].GetComponent<ButtonScript>().hasBeenPlayed == false)
+                if (buttons[randNum].GetComponent<ButtonScript>().hasBeenPlayed == false)
                 {
                     isPlayerPlaying = true;
                     timeCount = 0f;
