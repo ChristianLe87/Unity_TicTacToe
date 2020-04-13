@@ -13,6 +13,8 @@ public class GameLogic : MonoBehaviour
 
     public Button[] buttons = new Button[9];
 
+    bool isGameRunning = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,22 +24,39 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlayerPlaying == false)
+        if (isGameRunning)
         {
-            timeCount += Time.deltaTime;
-
-            if (timeCount > 2f)
+            if (isPlayerPlaying == false)
             {
-                randNum = Random.Range(0, 8);
+                timeCount += Time.deltaTime;
 
-                // ToDo: Fix infinit loop error when no more options avalible
-                if (buttons[randNum].GetComponent<ButtonScript>().hasBeenPlayed == false)
+                if (timeCount > 2f)
                 {
-                    isPlayerPlaying = true;
-                    timeCount = 0f;
-                    buttons[randNum].GetComponent<ButtonScript>().OnMachineClick();
+                    randNum = Random.Range(0, 8);
+
+                    if (buttons[randNum].GetComponent<ButtonScript>().hasBeenPlayed == false)
+                    {
+                        isPlayerPlaying = true;
+                        timeCount = 0f;
+                        buttons[randNum].GetComponent<ButtonScript>().OnMachineClick();
+                    }
                 }
             }
         }
+        else
+        {
+
+        }
+    }
+
+    public void PlayerWin()
+    {
+        GameLogic.FindObjectOfType<WinLose>().PlayerWin();
+    }
+
+    public void PlayerLooses()
+    {
+        GameLogic.FindObjectOfType<WinLose>().PlayeLose();
+
     }
 }

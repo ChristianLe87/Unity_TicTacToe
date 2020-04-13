@@ -9,9 +9,12 @@ public class LineScript : MonoBehaviour
     public Button button2;
     public Button button3;
 
+    GameLogic gameLogic;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameLogic = GameObject.Find("GameLogic").GetComponent<GameLogic>();
         this.GetComponent<Image>().enabled = false;
     }
 
@@ -26,6 +29,7 @@ public class LineScript : MonoBehaviour
             )
         {
             this.GetComponent<Image>().enabled = true;
+            gameLogic.PlayerWin();
         }
         // player loses
         else if (
@@ -35,6 +39,7 @@ public class LineScript : MonoBehaviour
             )
         {
             this.GetComponent<Image>().enabled = true;
+            gameLogic.PlayerLooses();
         }
     }
 }
