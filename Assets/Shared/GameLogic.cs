@@ -58,4 +58,11 @@ public class GameLogic : MonoBehaviour
         isGameRunning = false;
         isPlayerPlaying = false;
     }
+
+    public void GameTie()
+    {
+        GameLogic.FindObjectOfType<WinLose>().PlayeLose();
+        isGameRunning = false;
+        isPlayerPlaying = false;
+    }
 }
