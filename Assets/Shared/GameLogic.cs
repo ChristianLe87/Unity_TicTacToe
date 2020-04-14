@@ -10,6 +10,7 @@ public class GameLogic : MonoBehaviour
     public bool isPlayerPlaying = true;
     float timeCount = 0;
     int randNum = 0;
+    GameObject PlayAgainButton;
 
     public Button[] buttons = new Button[9];
 
@@ -19,6 +20,9 @@ public class GameLogic : MonoBehaviour
     void Start()
     {
         buttons = GameObject.FindObjectsOfType<Button>().OrderBy(x => x.name).ToArray();
+        PlayAgainButton = GameObject.Find("Button");
+        PlayAgainButton.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -48,6 +52,7 @@ public class GameLogic : MonoBehaviour
     public void PlayerWin()
     {
         GameLogic.FindObjectOfType<WinLose>().PlayerWin();
+        PlayAgainButton.SetActive(true);
         isGameRunning = false;
         isPlayerPlaying = false;
     }
@@ -55,6 +60,7 @@ public class GameLogic : MonoBehaviour
     public void PlayerLooses()
     {
         GameLogic.FindObjectOfType<WinLose>().PlayeLose();
+        PlayAgainButton.SetActive(true);
         isGameRunning = false;
         isPlayerPlaying = false;
     }
@@ -62,6 +68,7 @@ public class GameLogic : MonoBehaviour
     public void GameTie()
     {
         GameLogic.FindObjectOfType<WinLose>().PlayeLose();
+        PlayAgainButton.SetActive(true);
         isGameRunning = false;
         isPlayerPlaying = false;
     }
